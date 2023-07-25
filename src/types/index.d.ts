@@ -1,8 +1,13 @@
-export type SortType = 'asc' | 'desc'
+export {};
 
-export type FilterComparison = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between'| 'in';
-
-export type Item = Record<string, any>
+declare global {
+  interface Window {
+    Vue: any;
+  }
+}
+// export type SortType = 'asc' | 'desc'
+// export type FilterComparison = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between'| 'in';
+// export type Item = Record<string, any>
 
 export type FilterOption = {
   field: string
@@ -34,11 +39,10 @@ export type Header = {
   width?: number
 }
 
-export type ServerOptions = {
-  page: number
-  rowsPerPage: number
-  sortBy?: string | string[]
-  sortType?: SortType | SortType[]
+//{latitude:100,longitude:100}
+export type LatLagType = {
+    latitude: number
+    longitude: number
 }
 
 export type ClickRowArgument = Item & {
