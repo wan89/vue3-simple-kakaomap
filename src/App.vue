@@ -1,5 +1,9 @@
 <template>
-  <KakaoMap :latLag="{latitude:37.5178013, longitude:126.9000577}"/>
+  <div style="width:100%; height: 30px;"></div>
+  <KakaoMap
+    :latLag="{latitude:37.5178013, longitude:126.9000577}"
+    apiKey="d2373a30b726d414591f02d968e8bebf"
+  />
 </template>
 
 <script lang="ts">

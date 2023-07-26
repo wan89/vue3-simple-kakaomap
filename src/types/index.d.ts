@@ -5,6 +5,19 @@ declare global {
     Vue: any;
   }
 }
+
+// kakao map 의 좌표계를 받는 object형
+export type LatLagType = {
+  latitude: number
+  longitude: number
+}
+
+// kakao map의 object형
+export type LatLagPosition = {
+  La: number
+  Ma: number
+}
+
 // export type SortType = 'asc' | 'desc'
 // export type FilterComparison = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between'| 'in';
 // export type Item = Record<string, any>
@@ -37,12 +50,6 @@ export type Header = {
   sortable?: boolean
   fixed?: boolean
   width?: number
-}
-
-//{latitude:100,longitude:100}
-export type LatLagType = {
-    latitude: number
-    longitude: number
 }
 
 export type ClickRowArgument = Item & {
