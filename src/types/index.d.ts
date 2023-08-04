@@ -8,13 +8,13 @@ declare global {
 
 // kakao map 의 좌표계를 받는 object형
 export type LatLagType = {
-  latitude: number
+  latitude: number,
   longitude: number
 }
 
 // kakao map의 object형
 export type LatLagPosition = {
-  La: number
+  La: number,
   Ma: number
 }
 
@@ -22,48 +22,48 @@ export type LatLagPosition = {
 // export type FilterComparison = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between'| 'in';
 // export type Item = Record<string, any>
 
-export type FilterOption = {
-  field: string
-  comparison: 'between'
-  criteria: [number, number]
-} | {
-  field: string
-  comparison: '=' | '!='
-  criteria: number | string
-} | {
-  field: string
-  comparison: '>' | '>=' | '<' | '<='
-  criteria: number
-} | {
-  field: number | string
-  comparison: 'in'
-  criteria: number[] | string[]
-} | {
-  field: string
-  comparison: (value: any, criteria: string) => boolean
-  criteria: string
-}
+// export type FilterOption = {
+//   field: string
+//   comparison: 'between'
+//   criteria: [number, number]
+// } | {
+//   field: string
+//   comparison: '=' | '!='
+//   criteria: number | string
+// } | {
+//   field: string
+//   comparison: '>' | '>=' | '<' | '<='
+//   criteria: number
+// } | {
+//   field: number | string
+//   comparison: 'in'
+//   criteria: number[] | string[]
+// } | {
+//   field: string
+//   comparison: (value: any, criteria: string) => boolean
+//   criteria: string
+// }
 
-export type Header = {
-  text: string
-  value: string
-  sortable?: boolean
-  fixed?: boolean
-  width?: number
-}
+// export type Header = {
+//   text: string
+//   value: string
+//   sortable?: boolean
+//   fixed?: boolean
+//   width?: number
+// }
 
-export type ClickRowArgument = Item & {
-  isSelected?: boolean
-  indexInCurrentPage?: number
-}
+// export type ClickRowArgument = Item & {
+//   isSelected?: boolean
+//   indexInCurrentPage?: number
+// }
 
-export type UpdateSortArgument = {
-  sortType: SortType | null
-  sortBy: string
-}
+// export type UpdateSortArgument = {
+//   sortType: SortType | null
+//   sortBy: string
+// }
 
-export type HeaderItemClassNameFunction = (header: Header, columnNumber: number) => string
-export type BodyRowClassNameFunction = (item: Item, rowNumber: number) => string
-export type BodyItemClassNameFunction = (column: string, rowNumber: number) => string
+// export type HeaderItemClassNameFunction = (header: Header, columnNumber: number) => string
+// export type BodyRowClassNameFunction = (item: Item, rowNumber: number) => string
+// export type BodyItemClassNameFunction = (column: string, rowNumber: number) => string
 
-export type TextDirection = 'center' | 'left' | 'right'
+// export type TextDirection = 'center' | 'left' | 'right'
