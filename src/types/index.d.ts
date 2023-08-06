@@ -18,6 +18,14 @@ export type LatLagPosition = {
   Ma: number
 }
 
+// kakao-simple-map의 맵 옵션타입
+export type markerOptions = {
+  x: number,
+  y: number,
+  w: number,
+  h: number
+}
+
 // export type SortType = 'asc' | 'desc'
 // export type FilterComparison = '=' | '!=' | '>' | '>=' | '<' | '<=' | 'between'| 'in';
 // export type Item = Record<string, any>

@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { LatLagType, LatLagPosition } from './../types'
-import { PropType, ref } from 'vue';
+import type { LatLagType, LatLagPosition,markerOptions } from './../types'
+import { PropType, Ref, ref } from 'vue';
 import { loadJsFile } from './../assets/Utills';
 
 declare global {
@@ -22,12 +22,14 @@ declare global {
 
 const props = defineProps({
   latLag: Object as PropType<LatLagType>,
-  apiKey: String
+  apiKey: String,
+  markerImageUrl: String,
+  markerOptions: Object as PropType<markerOptions>
 });
 
 let maps:object;
 let marker:any;
-let logMsg:ref<string> = ref('~~');
+let logMsg:Ref<string> = ref('~~');
 
 // ==================================================================================================
 // functions
@@ -43,21 +45,26 @@ const initMap = () => {
       level: 3,
     };
     const kakaoMap:object = new window.kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-    const imageSrc = `https://wedqueen.s3.ap-northeast-2.amazonaws.com/test/marker_red.png`, // 마커이미지의 주소입니다    
-    imageSize = new window.kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-    imageOption = {offset: new window.kakao.maps.Point(27, 69)};
-    const markerImage:object = new window.kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
-    
     maps = kakaoMap;
+
+    let markerImage:object | null = null;
+
+    if(props.markerImageUrl && props.markerImageUrl != ''){
+      const imageSrc = props.markerImageUrl, // 마커이미지의 주소입니다    
+      imageSize = new window.kakao.maps.Size(props.markerOptions.w, props.markerOptions.h), // 마커이미지의 크기입니다
+      imageOption = { offset: new window.kakao.maps.Point(props.markerOptions.x, props.markerOptions.y )};//마커의 offset/센터값.
+      markerImage = new window.kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+    }
+
+    console.log(markerImage);
+
     marker = new window.kakao.maps.Marker({
-        position: latLagPosition,
-        image: markerImage 
+      position: latLagPosition,
+      image: markerImage? markerImage:null
     });
 
-    // console.log(marker);
-    // console.log(maps);
-
     marker.setMap(maps);
+
 };
 
 if(props.latLag && props.latLag.latitude != 0){
